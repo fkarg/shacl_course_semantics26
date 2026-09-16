@@ -1,0 +1,25 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+ex:AgeValidationShape a sh:NodeShape;
+  sh:property [
+      sh:hasValue xsd:integer;
+      sh:minCount 1;
+      sh:path sh:datatype
+    ], [
+      sh:hasValue ex:age;
+      sh:minCount 1;
+      sh:path sh:path
+    ], [
+      sh:hasValue ex:age;
+      sh:minCount 1;
+      sh:path sh:targetSubjectsOf
+    ];
+  sh:targetNode ex:AgeShape.
+
+ex:IsbnValidationShape a sh:PropertyShape;
+  sh:hasValue xsd:string;
+  sh:message "Value of ex:IsbnShape must be a string.";
+  sh:path sh:datatype;
+  sh:targetNode ex:IsbnShape.

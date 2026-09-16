@@ -1,0 +1,23 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PersonValidationShape a sh:PropertyShape;
+  sh:path sh:property;
+  sh:message "The property ex:property must have a qualified value shape ex:ContactShape and must be of nodekind Blank Node.";
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+      sh:property [
+          sh:hasValue ex:contact;
+          sh:minCount 1;
+          sh:path sh:path
+        ], [
+          sh:minCount 1;
+          sh:path sh:qualifiedMinCount
+        ], [
+          sh:hasValue ex:ContactShape;
+          sh:minCount 1;
+          sh:path sh:qualifiedValueShape
+        ]
+    ];
+  sh:targetNode ex:PersonShape.

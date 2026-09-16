@@ -1,0 +1,21 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:identifierSolutionShape a sh:NodeShape;
+  sh:property [
+      sh:hasValue ex:identifier;
+      sh:message "Add the target node to ex:identifer!";
+      sh:minCount 1;
+      sh:path sh:targetNode
+    ], [
+      sh:hasValue sh:PropertyShape;
+      sh:message "The shape must be a property shape!";
+      sh:minCount 1;
+      sh:path rdf:type
+    ], [
+      sh:maxCount 0;
+      sh:message "A property shape must not have an sh:property statements.";
+      sh:path sh:property
+    ];
+  sh:targetNode ex:identifierShape.

@@ -1,0 +1,23 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:BlankNodeOrIriShape a sh:PropertyShape;
+  sh:targetNode sh:BlankNodeOrIRI.
+
+ex:RecipeValidationShape a sh:NodeShape;
+  sh:property [
+      sh:message "The RecipeShape must have two validations!";
+      sh:minCount 2;
+      sh:path sh:property
+    ], [
+      sh:in (ex:ingredients rdfs:comment);
+      sh:message "One of the shapes must evaluate the ingredients.";
+      sh:path (sh:property sh:path)
+    ], [
+      sh:hasValue sh:BlankNodeOrIRI;
+      sh:message "The shape must have a nodeKind evaluation BlankNodeOrIRI.";
+      sh:path (sh:property sh:nodeKind);
+      sh:qualifiedMinCount 1
+    ];
+  sh:targetNode ex:RecipeShape.

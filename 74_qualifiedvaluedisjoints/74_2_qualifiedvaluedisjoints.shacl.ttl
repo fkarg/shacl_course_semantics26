@@ -1,0 +1,26 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:AuthorShape
+  sh:minCount 1;
+  sh:path ex:authorOf.
+
+ex:PersonShape a sh:NodeShape;
+  sh:property [
+      sh:path ex:likes;
+      sh:qualifiedMaxCount 1;
+      sh:qualifiedValueShape ex:AuthorShape
+      
+    ], [
+      sh:maxCount 3;
+      sh:path ex:likes
+    ], [
+      sh:path ex:likes;
+      sh:qualifiedMaxCount 1;
+      sh:qualifiedValueShape ex:RecipeShape
+    ];
+  sh:targetClass ex:Person.
+
+ex:RecipeShape a sh:PropertyShape;
+  sh:minCount 1;
+  sh:path ex:ingredients.

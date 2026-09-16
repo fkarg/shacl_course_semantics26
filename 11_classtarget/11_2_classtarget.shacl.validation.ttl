@@ -1,0 +1,28 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:RecipePropertyValidationShape a sh:PropertyShape;
+  sh:maxCount 0;
+  sh:message "None of the property shapes should have a targetclass";
+  sh:path sh:targetClass;
+  sh:targetNode
+    ex:RecipeCommentShape,
+    ex:RecipeIngredientShape,
+    ex:RecipeLabelShape;
+  sh:targetObjectsOf sh:property.
+
+ex:RecipeValidationShape a sh:NodeShape;
+  sh:property [
+      sh:minCount 3;
+      sh:path (sh:property sh:path)
+    ], [
+      sh:hasValue sh:NodeShape;
+      sh:message "The RecipeValidationShape must be a NodeShape";
+      sh:path rdf:type
+    ], [
+      sh:message "The RecipeValidationShape must have 3 property shapes attached";
+      sh:minCount 3;
+      sh:path sh:property
+    ];
+  sh:targetNode ex:RecipeShape.

@@ -1,0 +1,17 @@
+@prefix ex: <http://example.com/FriendGraph#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:SPARQLSelectLikedWithOthersShape a sh:NodeShape;
+  sh:targetClass ex:Person;
+  sh:sparql [
+    a sh:SPARQLConstraint;
+    sh:select """
+    PREFIX ex: <http://example.com/FriendGraph#>
+    SELECT $this
+    WHERE {
+        $this ex:likes ?likedThing .
+        ?anotherPerson ex:likes ?likedThing
+        FILTER($this != ?anotherPerson)
+    }
+    """
+  ].

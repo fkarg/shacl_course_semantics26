@@ -1,0 +1,15 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:AgeValidationShape a sh:PropertyShape;
+  sh:message "The property shape validating the age should be deactivated";
+  sh:minCount 1;
+  sh:path sh:deactivated;
+  sh:targetNode ex:AgeShape.
+
+ex:LikesValidationShape a sh:NodeShape;
+  sh:hasValue false;
+  sh:targetNode ex:LikesShape;
+  sh:message "The property shape validating the likes should be activated";
+  sh:path sh:deactivated.

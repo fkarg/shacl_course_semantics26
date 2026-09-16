@@ -1,0 +1,10 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PublicationValidationShape a sh:PropertyShape;
+  sh:hasValue rdfs:subClassOf;
+  sh:minCount 1;
+  sh:path (sh:path sh:oneOrMorePath sh:inversePath);
+  sh:targetNode ex:PublicationShape;
+  sh:message "Inverse the path of rdfs:subClassOf.". 

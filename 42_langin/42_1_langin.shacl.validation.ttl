@@ -1,0 +1,10 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:LabelValidationShape a sh:PropertyShape ;
+sh:targetNode ex:LabelShape;
+sh:message "limit the language to es, de, en, and fr";
+sh:path (sh:languageIn [sh:zeroOrMorePath rdf:rest] rdf:first) ;
+sh:minCount 4;
+sh:in ("es" "de" "en" "fr").

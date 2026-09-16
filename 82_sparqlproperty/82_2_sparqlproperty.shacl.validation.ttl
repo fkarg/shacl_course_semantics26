@@ -1,0 +1,9 @@
+@prefix ex: <http://example.com/FriendGraph#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:SPARQLSelectLikedWithOthersValidationShape a sh:PropertyShape ;
+   sh:flags "s" ;
+   sh:path ( sh:property sh:sparql sh:select ) ;
+   sh:pattern "\\$PATH.+\\$PATH" ;
+   sh:message "replace ex:likes with $PATH" ;
+   sh:targetNode ex:PersonShape .

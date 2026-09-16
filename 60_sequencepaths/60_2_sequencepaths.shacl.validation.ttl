@@ -1,0 +1,20 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PersonValidationShape a sh:NodeShape;
+  sh:property [
+      sh:in (ex:isIn ex:address);
+      sh:message "Add the sequence path syntax to evaluate country and address.";
+      sh:minCount 2;
+      sh:path (sh:property sh:path rdf:rest rdf:first)
+    ], [
+      sh:path sh:property;
+      sh:qualifiedMinCount 2;
+      sh:qualifiedValueShape [
+      sh:message "Add a mincount to ensure that the address is present";
+          sh:minCount 1;
+          sh:path sh:minCount
+        ]
+    ];
+  sh:targetNode ex:PersonShape.

@@ -1,0 +1,13 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+ex:AgeShape a sh:PropertyShape;
+  sh:datatype xsd:integer;
+  sh:path ex:age;
+  sh:targetSubjectsOf ex:age.
+
+ex:IsbnShape a sh:PropertyShape;
+  sh:datatype xsd:string;
+  sh:path ex:isbn;
+  sh:targetSubjectsOf ex:isbn.

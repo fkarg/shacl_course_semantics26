@@ -1,0 +1,17 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:BookShape a sh:NodeShape;
+  sh:targetClass
+    ex:AdventureBook,
+    ex:Book;
+  sh:xone (_:b1 _:b2).
+
+_:b1
+  sh:minCount 1;
+  sh:path ex:isbn.
+
+_:b2
+  sh:minCount 1;
+  sh:path ex:identifier.

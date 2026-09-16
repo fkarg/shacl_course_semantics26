@@ -1,0 +1,18 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:RecipeCommentShape a sh:PropertyShape;
+  sh:message "Recipes must have at least one comment";
+  sh:minCount 1;
+  sh:path rdfs:comment.
+
+ex:RecipeIngredientShape a sh:PropertyShape;
+  sh:message "Recipes must have at least one ingredient";
+  sh:minCount 1;
+  sh:path ex:ingredients.
+
+ex:RecipeLabelShape a sh:PropertyShape;
+  sh:message "Recipes must have at least one label";
+  sh:minCount 1;
+  sh:path rdfs:label.

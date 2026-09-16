@@ -1,0 +1,26 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:NotLikeQualifiedMaxCountShape a sh:PropertyShape;
+  sh:maxCount 0;
+  sh:message "There should not be a maximum for liked authors, only recipes.";
+  sh:path (_:b1 sh:qualifiedMaxCount);
+  sh:targetNode ex:LikesAuthorShape.
+
+ex:PersonValidationShape a sh:NodeShape;
+  sh:property [
+      sh:hasValue 1;
+      sh:maxCount 1;
+      sh:message "Set the qualifiedMaxCount to 1 for the recipe qualified value shape.";
+      sh:minCount 1;
+      sh:path (sh:property sh:qualifiedMaxCount)
+    ], [
+      sh:hasValue 3;
+      sh:message "People should be allowed to like at maximum three things.";
+      sh:mincount 1;
+      sh:path (sh:property sh:maxCount)
+    ];
+  sh:targetNode ex:PersonShape.
+
+_:b1
+  sh:inversePath sh:qualifiedValueShape.

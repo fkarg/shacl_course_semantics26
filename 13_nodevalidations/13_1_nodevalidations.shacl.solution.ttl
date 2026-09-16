@@ -1,0 +1,9 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+ex:LabelShape a sh:PropertyShape;
+  sh:minInclusive 23;
+  sh:path ex:age;
+  sh:targetSubjectsOf ex:age.

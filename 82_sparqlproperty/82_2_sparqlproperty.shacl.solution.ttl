@@ -1,0 +1,23 @@
+@prefix ex: <http://example.com/FriendGraph#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+
+ex:PersonShape a sh:NodeShape;
+  sh:targetClass ex:Person;
+  sh:property ex:SPARQLSelectLikedWithOthersShape.
+
+  ex:SPARQLSelectLikedWithOthersShape a sh:PropertyShape;
+  sh:path ex:likes;
+  sh:sparql [
+    a sh:SPARQLConstraint;
+    sh:message "Person should not like the same thing ({?value}) as another person: {$anotherPerson}";
+    sh:select """
+    PREFIX ex: <http://example.com/FriendGraph#>
+    SELECT $this ?value ?anotherPerson
+    WHERE {
+        $this $PATH ?value .
+        ?anotherPerson $PATH ?value
+        FILTER($this != ?anotherPerson)
+    }
+    """
+  ].

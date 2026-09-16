@@ -1,0 +1,44 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:ContactValidationShape a sh:NodeShape;
+  sh:message "Remove the mincount element on the Country to make it optional";
+  sh:or (_:b1 _:b2);
+  sh:property [
+      sh:message "Create name properties for all of the elements";
+      sh:minCount 3;
+      sh:path (sh:property sh:name)
+    ], [
+      sh:message "Create description properties for all of the elements";
+      sh:minCount 3;
+      sh:path (sh:property sh:description)
+    ], [
+      sh:message "Create message properties for all of the elements";
+      sh:minCount 3;
+      sh:path (sh:property sh:message)
+    ], [
+      sh:message "Add a maxcount of 1 to all properties to ensure that there is at maximum one input field for a given attribute.";
+      sh:path sh:property;
+      sh:qualifiedMinCount 3;
+      sh:qualifiedValueShape [
+          sh:property [
+              sh:minCount 1;
+              sh:path sh:maxCount
+            ]
+        ]
+    ];
+  sh:targetNode ex:ContactShape.
+
+_:b1
+  sh:path sh:property;
+  sh:qualifiedMaxCount 2;
+  sh:qualifiedMinCount 2;
+  sh:qualifiedValueShape [
+      sh:hasValue 1;
+      sh:path sh:minCount
+    ].
+
+_:b2
+  sh:hasValue 0;
+  sh:minCount 3;
+  sh:path (sh:property sh:minCount).

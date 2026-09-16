@@ -1,0 +1,12 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PersonAgeShape a sh:NodeShape;
+  sh:message "Person must be younger than 25 or older than 60";
+  sh:not [
+      sh:maxInclusive 60;
+      sh:minInclusive 25;
+      sh:path ex:age
+    ];
+  sh:targetClass ex:Person.

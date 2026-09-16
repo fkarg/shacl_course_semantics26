@@ -1,0 +1,15 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PersonAgeValidationShape a sh:NodeShape;
+  sh:property [
+      sh:maxCount 0;
+      sh:message "Inverse the property shape!";
+      sh:path sh:property
+    ], [
+      sh:message "Inverse the property shape!";
+      sh:minCount 1;
+      sh:path sh:not
+    ];
+  sh:targetNode ex:PersonAgeShape.

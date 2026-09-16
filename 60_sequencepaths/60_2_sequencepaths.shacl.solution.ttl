@@ -1,0 +1,14 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+ex:PersonShape a sh:NodeShape;
+  sh:property [
+      sh:minCount 1;
+      sh:path (ex:contact ex:isIn)
+    ], [
+      sh:datatype xsd:string;
+      sh:minCount 1;
+      sh:path (ex:contact ex:address)
+    ];
+  sh:targetClass ex:Person.

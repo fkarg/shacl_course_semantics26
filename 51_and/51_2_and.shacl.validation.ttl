@@ -1,0 +1,22 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:BookValidationShape a sh:NodeShape;
+  sh:property [
+      sh:message "Combine the HumanReadabilityShape into the BookShape.";
+      sh:minCount 1;
+      sh:path sh:and
+    ], [
+      sh:hasValue ex:HumanReadabilityShape;
+      sh:nodeKind sh:BlankNodeOrIRI;
+      sh:path (sh:and _:b1 rdf:first)
+    ], [
+      sh:hasValue ex:ISBNShape, ex:BookIdentifierShape;
+      sh:nodeKind sh:BlankNodeOrIRI;
+      sh:path (sh:and _:b1 rdf:first sh:or _:b1 rdf:first)
+    ];
+  sh:targetNode ex:BookShape.
+
+_:b1
+  sh:zeroOrMorePath rdf:rest.

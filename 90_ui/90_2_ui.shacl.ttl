@@ -1,0 +1,30 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+ex:ContactShape a sh:NodeShape;
+  sh:property [
+      sh:datatype xsd:string;
+      sh:description "The address of the contact";
+      sh:message "The address is not valid";
+      sh:minCount 1;
+      sh:name "Address";
+      sh:path ex:address
+    ], [
+      sh:datatype xsd:string;
+      sh:description "The email address of the contact";
+      sh:message "The email address is not valid";
+      sh:minCount 1;
+      sh:name "Email";
+      sh:path ex:hasEmail;
+      sh:pattern "[W-z.0-9]+@[A-z.0-9]+\\.\\w{2,3}"
+    ], [
+      sh:description "The kind of accomendation where a person lives.";
+      sh:in (ex:Apartment ex:House);
+      sh:message "The selection is not valid";
+      sh:minCount 1;
+      sh:name "Accomendation Type";
+      sh:path rdf:type
+    ];
+    sh:targetObjectsOf ex:contact.

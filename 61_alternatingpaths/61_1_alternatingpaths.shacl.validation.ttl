@@ -1,0 +1,16 @@
+@prefix ex: <http://example.com/FriendGraph#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:AgeValidationShape a sh:Nodeshape;
+  sh:property [
+      sh:message "Create an alternative Path with the properties ex:age and foaf:age";
+      sh:minCount 1;
+      sh:in(ex:age foaf:age);
+      sh:path (sh:path sh:alternativePath rdf:rest rdf:first)
+    ], [
+      sh:minInclusive 1;
+      sh:path sh:minCount;
+      sh:message "Create a MinCount for the alternative Path";
+    ].

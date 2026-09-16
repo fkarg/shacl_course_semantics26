@@ -1,0 +1,18 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:CountryValidationShape a sh:NodeShape;
+  sh:message "The age is not within the range of 18 and 120";
+  sh:and (_:b1 _:b2);
+  sh:targetNode ex:AgeShape.
+
+_:b1 a sh:PropertyShape;
+  sh:maxInclusive 120;
+  sh:minInclusive 120;
+  sh:path sh:maxInclusive.
+
+_:b2 a sh:PropertyShape;
+  sh:maxInclusive 121;
+  sh:minInclusive 121;
+  sh:path sh:maxExclusive.

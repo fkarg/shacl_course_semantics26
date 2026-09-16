@@ -1,0 +1,25 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:BookShape a sh:NodeShape;
+  sh:and (ex:HumanReadabilityShape 
+  [ a sh:PropertyShape;
+    sh:minCount 1;
+    sh:path ex:isbn ]
+  );
+  sh:targetClass
+    ex:AdventureBook,
+    ex:Book.
+
+ex:HumanReadabilityShape a sh:NodeShape;
+  sh:property [
+      sh:datatype rdf:langString;
+      sh:minCount 1;
+      sh:path rdfs:label
+    ], [
+      sh:datatype rdf:langString;
+      sh:minCount 1;
+      sh:path rdfs:comment
+    ].

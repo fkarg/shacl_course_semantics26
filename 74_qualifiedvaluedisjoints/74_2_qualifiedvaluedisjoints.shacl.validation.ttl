@@ -1,0 +1,20 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PersonCountValidationShape a sh:PropertyShape;
+  sh:message "Add a qualified value shape disjoint flag to both qualified value shapes.";
+  sh:path sh:property;
+  sh:qualifiedMaxCount 2;
+  sh:qualifiedMinCount 2;
+  sh:qualifiedValueShape [
+      sh:property [
+          sh:minCount 1;
+          sh:path sh:qualifiedValueShape
+        ], [
+          sh:hasValue true;
+          sh:minCount 1;
+          sh:path sh:qualifiedValueShapesDisjoint
+        ]
+    ];
+  sh:targetNode ex:PersonShape.

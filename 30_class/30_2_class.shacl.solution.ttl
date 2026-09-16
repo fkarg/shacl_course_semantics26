@@ -1,0 +1,12 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:AuthorOfShape a sh:PropertyShape;
+  sh:class ex:AdventureBook;
+  sh:path ex:authorOf;
+  sh:targetNode ex:joshuaSlocum.
+
+ex:IngredientsShape a sh:PropertyShape;
+  sh:class ex:Recipe;
+  sh:path ex:ingredients;
+  sh:targetSubjectsOf ex:ingredients.

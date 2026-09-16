@@ -1,0 +1,17 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PersonValidationShape a sh:NodeShape ;
+sh:targetNode ex:PersonShape;
+sh:property [
+  sh:path sh:closed;
+  sh:minCount 1;
+  sh:hasValue true
+],
+[
+  sh:path (sh:ignoredProperties [sh:zeroOrMorePath rdf:rest] rdf:first);
+  sh:minCount 2;
+  sh:message "ignored properties mus be rdf:type and ex:favoritBooks";
+  sh:in (rdf:type ex:favoriteBooks)
+].

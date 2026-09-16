@@ -1,0 +1,10 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:LikedThingsShape a sh:PropertyShape;
+  sh:message "Create an alternative Path with the properties ex:age and foaf:age";
+  sh:minCount 3;
+  sh:path [
+      sh:alternativePath (ex:likes ex:favoriteBooks)
+    ];
+  sh:targetClass ex:Person.

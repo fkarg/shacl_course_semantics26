@@ -1,0 +1,11 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:BookValidationShape a sh:NodeShape;
+  sh:property [
+      sh:message "Either ex:isbn or ex:identifier must be present. Create a or-connection between the shapes.";
+      sh:minCount 1;
+      sh:path sh:xone
+    ];
+  sh:targetNode ex:BookShape.

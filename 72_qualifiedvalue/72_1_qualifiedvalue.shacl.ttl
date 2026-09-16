@@ -1,0 +1,24 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+ex:ContactShape a sh:NodeShape;
+  sh:property [
+      sh:in (ex:House ex:Apartment);
+      sh:minCount 1;
+      sh:path rdf:type
+    ], [
+      sh:minCount 1;
+      sh:path ex:address
+    ], [
+      sh:minCount 1;
+      sh:path ex:hasEmail
+    ].
+
+ex:PersonShape a sh:NodeShape;
+  sh:property [
+      sh:datatype xsd:integer;
+      sh:path ex:age
+    ];
+  sh:targetClass ex:Person.

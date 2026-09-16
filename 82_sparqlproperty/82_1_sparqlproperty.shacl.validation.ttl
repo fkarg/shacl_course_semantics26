@@ -1,0 +1,18 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PersonValidationShape a sh:NodeShape;
+  sh:property [
+      sh:minCount 1;
+      sh:path sh:targetClass
+    ],[sh:path (sh:property sh:sparql);sh:minCount 1;
+    sh:message "The sparql validation must be part of the node shape (nested in a property shape)."];
+  sh:targetNode ex:PersonShape.
+
+sh:SPARQLSelectLikedWithOthersValidationShape a sh:NodeShape;
+  sh:property [
+      sh:maxCount 0;
+      sh:message "The target should be at the node level";
+      sh:path sh:targetClass
+    ];
+  sh:targetNode ex:SPARQLSelectLikedWithOthersShape.

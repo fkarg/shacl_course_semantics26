@@ -1,0 +1,12 @@
+@prefix ex: <http://example.com/FriendGraph#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:IngredientsShape a sh:PropertyShape;
+  sh:minCount 3;
+  sh:path (ex:ingredients _:b1 rdf:first);
+  sh:targetClass ex:Recipe.
+
+_:b1
+  sh:oneOrMorePath rdf:rest.
+

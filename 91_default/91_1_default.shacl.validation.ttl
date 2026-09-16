@@ -1,0 +1,18 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:ContactValidationShape a sh:PropertyShape;
+  sh:minCount 1;
+  sh:path sh:property;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [ a sh:NodeShape;
+      sh:property [
+  sh:message "Add a default value to the telephone number.";
+          sh:minCount 1;
+          sh:path sh:defaultValue
+        ], [
+          sh:hasValue "Telephone";
+          sh:path sh:name
+        ]
+    ];
+  sh:targetNode ex:ContactShape.

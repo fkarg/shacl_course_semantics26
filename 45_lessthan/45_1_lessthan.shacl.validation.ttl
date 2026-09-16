@@ -1,0 +1,17 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:BookReleaseValidationshape a sh:NodeShape;
+  sh:property [
+      sh:hasValue ex:latestRelease;
+      sh:maxCount 1;
+      sh:message "The first release must be occur before (smaller) than the last release!";
+      sh:minCount 1;
+      sh:path sh:lessThan
+    ], [
+      sh:maxCount 1;
+      sh:minCount 1;
+      sh:path sh:path
+    ];
+  sh:targetNode ex:BookReleaseShape.

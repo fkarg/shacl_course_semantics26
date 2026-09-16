@@ -1,0 +1,12 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PublicationShape a sh:PropertyShape;
+  sh:minCount 4;
+  sh:path [
+      sh:oneOrMorePath [
+          sh:inversePath rdfs:subClassOf
+        ]
+    ];
+  sh:targetNode ex:Publication.

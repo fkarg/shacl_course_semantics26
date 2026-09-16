@@ -1,0 +1,9 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:LabelValidationShape a sh:PropertyShape;
+  sh:hasValue true;
+  sh:minCount 1;
+  sh:path sh:uniqueLang;
+  sh:targetNode ex:LabelShape.

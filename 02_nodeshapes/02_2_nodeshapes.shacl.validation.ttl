@@ -1,0 +1,10 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:RecipeLabelValidationShape a sh:PropertyShape;
+  sh:message "Nest the ex:RecipeLabelShape in a blank node in the node shape.";
+  sh:minCount 3;
+  sh:path sh:property;
+  sh:nodeKind sh:BlankNode;
+  sh:targetNode ex:RecipeShape.

@@ -1,0 +1,9 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:LikeValidationShape a sh:PropertyShape;
+  sh:hasValue ex:bakedBeansAndSpam;
+  sh:message "Change the value to bakedbeansAndSpam";
+  sh:path sh:hasValue;
+  sh:targetNode ex:LikeShape.

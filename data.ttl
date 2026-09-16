@@ -1,0 +1,152 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+ex:AdventureBook
+  rdfs:subClassOf ex:Book.
+
+ex:alex a ex:Person;
+  ex:age 22;
+  ex:contact [ a ex:House;
+      ex:address "Downing Street 22, London";
+      ex:hasEmail "alex.mustermann@muster.de";
+      ex:isIn ex:UK
+    ];
+  ex:favoriteBooks ex:AdventureBook;
+  ex:likes
+    ex:bakedBeansAndSpam,
+    ex:joshuaSlocum;
+  rdfs:comment
+    "Alex ist ein toller Typ"@de,
+    "Alex is a great guy"@en,
+    "Alex es un gran tipo"@es.
+
+ex:authorOf
+  rdfs:domain ex:Author;
+  rdfs:range ex:Publication.
+
+ex:bakedBeansAndSpam a ex:Recipe;
+  ex:ingredients (ex:eggs ex:spam);
+  rdfs:comment
+    "Ein köstliches Rezept für eine herzhafte Mahlzeit."@de,
+    "A delicious recipe for a heardfty meal."@en,
+    "A delicious recipe for a hearty meal."@en,
+    "Una deliciosa receta para una comida abundante."@es;
+  rdfs:label
+    "Gebackene Bohnen und Spam"@de,
+    "Baked Beans and Spam"@en,
+    "Habichuelas y Spam"@es.
+
+ex:bob a ex:Person;
+  ex:age 67;
+  ex:contact [ a ex:Apartment;
+      ex:address "Main Street 10, New York";
+      ex:hasEmail "bob.smith@example.com";
+      ex:isIn ex:USA
+    ];
+  ex:favoriteBooks ex:AdventureBook;
+  ex:likes
+    ex:bakedBeansAndSpam,
+    ex:jamieOliver;
+  rdfs:comment
+    "Bob ist eine freundliche Person"@de,
+    "Bob is a friendly person"@en,
+    "Bob es una persona amigable"@es;
+  foaf:age 66.
+
+ex:Book
+  rdfs:label
+    "Buch"@de,
+    "Book"@en,
+    "Booklet"@en,
+    "Libro"@es;
+  rdfs:subClassOf ex:Publication.
+
+ex:carbonara a ex:Recipe;
+  ex:ingredients (ex:bacon ex:cheese ex:eggs);
+  rdfs:comment
+    "Ein köstliches Pastagericht."@de,
+    "A delicious pasta dish."@en,
+    "Un delicioso plato de pasta."@es;
+  rdfs:label
+    "Cabonara"@de,
+    "Cabonara"@en,
+    "Cabonara"@es.
+
+ex:charlie a ex:Person;
+  ex:age 25;
+  ex:contact [ a ex:Apartment;
+      ex:address "Rue de la Aventure 5, Paris";
+      ex:hasEmail "charlie.doe@example.com";
+      ex:isIn ex:France
+    ];
+  ex:favoriteBooks ex:AdventureBook;
+  ex:likes
+    ex:carbonara,
+    ex:pizza;
+  rdfs:comment
+    "Charlie ist eine abenteuerlustige Seele"@de,
+    "Charlie is an adventurous soul"@en,
+    "Charlie es un alma aventurera"@es.
+
+ex:CookingBook
+  rdfs:subClassOf ex:Book.
+
+ex:eggs
+  rdfs:label
+    "Eier"@de,
+    "Eggs"@en,
+    "Huevos"@es.
+
+ex:identifier
+  rdfs:comment
+    "Ein eindeutiger Identifikator."@de,
+    "A unique identifier."@en;
+  rdfs:label
+    "Identifikationsnummer"@de,
+    "ID-Number"@en.
+
+ex:isbn
+  rdfs:comment
+    "Die Internationale Standardbuchnummer (ISBN) ist eine eindeutige numerische kommerzielle Buchkennung."@de,
+    "The International Standard Book Number (ISBN) is a unique numeric commercial book identifier."@en;
+  rdfs:label
+    "ISBN-Nummer"@de,
+    "ISBN-Number"@en;
+  rdfs:subPropertyOf ex:identifier.
+
+ex:jamieOliver
+  ex:authorOf ex:jamiesGreatBritain;
+  ex:ingredients (ex:meat ex:vegetables ex:spices);
+  ex:writes ex:CookingBook;
+  rdfs:label "Jamie Oliver".
+
+ex:joshuaSlocum
+  ex:authorOf ex:sailingAloneAroundTheWorld;
+  ex:writes ex:AdventureBook;
+  rdfs:label "Joshua Slocum".
+
+ex:pizza a ex:Recipe;
+  rdfs:label
+    "Pizza"@de,
+    "Pizza"@en,
+    "Pizza"@es.
+
+ex:sailingAloneAroundTheWorld a ex:AdventureBook;
+  ex:firstReleased "1900-01-01"^^xsd:date;
+  ex:isbn "1728663091";
+  ex:latestRelease "2020-01-01"^^xsd:date;
+  rdfs:label
+    "Allein um die Welt segeln"@de,
+    "Sailing Alone Around The World"@en.
+
+ex:spam
+  rdfs:label
+    "Spam"@de,
+    "Spam"@en,
+    "Spam"@es.
+
+ex:writes
+  rdfs:domain ex:Author;
+  rdfs:range ex:Publication.

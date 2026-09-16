@@ -1,0 +1,15 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:CountryValidationShape a sh:NodeShape;
+  sh:property [
+      sh:hasValue ex:isIn;
+      sh:message "Create a list of allowed Countries";
+      sh:path sh:path
+    ], [
+      sh:message "Create a list of Countries";
+      sh:nodeKind sh:BlankNode;
+      sh:path sh:in
+    ];
+  sh:targetNode ex:ContactCountryShape.

@@ -1,0 +1,9 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:RecipeLabelValidationShape a sh:PropertyShape;
+  sh:hasValue ex:RecipeLabelShape;
+  sh:message "Connect the RecipeLabelShape to the NodeShape.";
+  sh:minCount 1;
+  sh:path sh:property;
+  sh:targetNode ex:RecipeShape.

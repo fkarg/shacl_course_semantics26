@@ -1,0 +1,18 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:ContactValidationShape a sh:NodeShape;
+  sh:property [
+      sh:message "Create name properties for one of the elements";
+      sh:minCount 1;
+      sh:path (sh:property sh:name)
+    ], [
+      sh:message "Create description properties for one of the elements";
+      sh:minCount 1;
+      sh:path (sh:property sh:description)
+    ], [
+      sh:message "Create message properties for one of the elements";
+      sh:minCount 1;
+      sh:path (sh:property sh:message)
+    ];
+  sh:targetNode ex:ContactShape.

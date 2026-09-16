@@ -1,0 +1,18 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:LabelValidationShape a sh:PropertyShape;
+  sh:maxInclusive 30;
+  sh:message "Set the # characters for the label between 4 and 30";
+  sh:minInclusive 30;
+  sh:path sh:maxLength;
+  sh:minCount 1;
+  sh:targetNode ex:LabelShape.
+ex:CommentValidationShape a sh:PropertyShape;
+  sh:maxInclusive 30;
+  sh:message "Set the # characters for the Comments to at least 30";
+  sh:minInclusive 30;
+  sh:path sh:minLength;
+  sh:minCount 1;
+  sh:targetNode ex:CommentShape.

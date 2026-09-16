@@ -1,0 +1,7 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:EmailShape a sh:PropertyShape;
+  sh:path ex:hasEmail;
+  sh:targetSubjectsOf ex:hasEmail.

@@ -1,0 +1,17 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:ContactCountryShape a sh:PropertyShape;
+  sh:in (ex:USA ex:UK ex:Frace);
+  sh:path ex:isIn.
+
+ex:ContactTypeShape a sh:PropertyShape;
+  sh:in (ex:House ex:Apartment);
+  sh:path rdf:type.
+
+ex:HousingShape a sh:NodeShape;
+  sh:property
+    ex:ContactCountryShape,
+    ex:ContactTypeShape;
+  sh:targetSubjectsOf ex:isIn.

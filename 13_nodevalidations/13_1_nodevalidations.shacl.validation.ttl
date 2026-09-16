@@ -1,0 +1,17 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ex: <http://example.com/FriendGraph#> .
+
+sh:LabelValidationShape a sh:NodeShape ;
+    sh:targetNode ex:LabelShape;
+    sh:class sh:PropertyShape ;
+    sh:message "Convert the shape to a property shape.";
+    sh:property [
+        sh:path sh:path ;
+        sh:minCount 1;
+        sh:message "A property shape must have a path"
+    ] ,
+    [
+        sh:path sh:targetSubjectsOf;
+        sh:minCount 1;
+        sh:message "Change the validation from the targetObjectOf to the targetSubjectOf to get the proper focus node."
+    ].

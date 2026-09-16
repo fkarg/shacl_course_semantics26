@@ -1,0 +1,16 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:subjectsofValidationShape a sh:NodeShape;
+  sh:property [
+      sh:hasValue ex:age;
+      sh:message "Must have a path property with a value of ex:age";
+      sh:minCount 1;
+      sh:path sh:path
+    ], [
+      sh:hasValue ex:age;
+      sh:message "Must have a targetSubjectsOf property with a value of ex:age";
+      sh:minCount 1;
+      sh:path sh:targetSubjectsOf
+    ];
+  sh:targetNode ex:agePropertyShape.

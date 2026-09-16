@@ -1,0 +1,14 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:RecipeValidationShape a sh:NodeShape;
+  sh:property [
+      sh:message "Recipes must have exactly one comment. Set the maximum.";
+      sh:minCount 1;
+      sh:path sh:maxCount
+    ], [
+      sh:message "Recipes must have exactly one comment. Set the minimum.";
+      sh:minCount 1;
+      sh:path sh:minCount
+    ];
+  sh:targetNode ex:RecipeCommentShape.

@@ -1,0 +1,7 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PersonTypeValidationShape a sh:PropertyShape;
+sh:path sh:class;
+sh:hasValue ex:Person;
+sh:targetNode ex:PersonTypeShape.

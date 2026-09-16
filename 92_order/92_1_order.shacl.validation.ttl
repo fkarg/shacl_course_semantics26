@@ -1,0 +1,8 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:ContactValidationShape a sh:PropertyShape;
+  sh:minCount 4;
+  sh:message "All of the property shapes must have an sh:order property";
+  sh:path (sh:property sh:order);
+  sh:targetNode ex:ContactShape.

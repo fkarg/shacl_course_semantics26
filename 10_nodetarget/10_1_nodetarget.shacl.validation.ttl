@@ -1,0 +1,9 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:identifierSolutionShape a sh:PropertyShape;
+  sh:message "Add the target node to ex:identifer!";
+  sh:minCount 1;
+  sh:path sh:targetNode;
+  sh:targetNode ex:identifierShape;
+  sh:hasValue ex:identifier.

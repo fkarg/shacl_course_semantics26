@@ -1,0 +1,9 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+ex:IsbnValidationShape a sh:PropertyShape;
+  sh:hasValue xsd:string;
+  sh:message "Value of ex:IsbnShape must be a string.";
+  sh:path sh:datatype;
+  sh:targetNode ex:IsbnShape.

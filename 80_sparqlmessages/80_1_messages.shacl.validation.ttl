@@ -1,0 +1,12 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:SPARQLSelectLikedWithOthersValidatonShape a sh:PropertyShape;
+  sh:message "Add a message with a variable to the SPARQL query.";
+  sh:minCount 1;
+  sh:path (_:b1 sh:message);
+  sh:pattern "{\\?.|{\\$.";
+  sh:targetNode ex:SPARQLSelectLikedWithOthersShape.
+
+_:b1
+  sh:zeroOrMorePath sh:sparql.

@@ -1,0 +1,16 @@
+@prefix ex: <http://example.com/FriendGraph#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:BookShape a sh:NodeShape;
+  sh:or (_:b1 _:b2);
+  sh:targetClass
+    ex:AdventureBook,
+    ex:Book.
+
+_:b1 a sh:PropertyShape;
+  sh:minCount 1;
+  sh:path ex:isbn.
+
+_:b2
+  sh:minCount 1;
+  sh:path ex:identifier.

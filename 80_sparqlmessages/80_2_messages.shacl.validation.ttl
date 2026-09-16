@@ -1,0 +1,9 @@
+@prefix ex: <http://example.com/FriendGraph#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:SPARQLSelectLikedWithOthersValidatonShape a sh:PropertyShape;
+sh:targetNode ex:SPARQLSelectLikedWithOthersShape;
+sh:path (sh:sparql sh:select);
+sh:message "Change the errornous return value to ?value.";
+sh:minCount 1;
+sh:pattern "\\?value".

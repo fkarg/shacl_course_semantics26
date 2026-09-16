@@ -1,0 +1,10 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:LikedThingsValidationShape a sh:PropertyShape;
+  sh:in (ex:likes ex:favoriteBooks);
+  sh:message "Every person must like at least three things, using ex:likes or ex:favoriteBooks.";
+  sh:minCount 1;
+  sh:path (sh:path sh:alternativePath rdf:rest rdf:first);
+  sh:targetNode ex:LikedThingsShape.

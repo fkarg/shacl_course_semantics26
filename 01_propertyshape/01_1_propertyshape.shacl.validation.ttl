@@ -1,0 +1,24 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:01_PropertyShape a sh:NodeShape;
+  sh:property [
+      sh:maxCount 1;
+      sh:message "property shapes must have exactly one path!";
+      sh:minCount 1;
+      sh:path sh:path
+    ], [
+      sh:maxCount 1;
+      sh:message "Add a target!";
+      sh:minCount 1;
+      sh:path [
+          sh:alternativePath (sh:targetClass sh:targetNode sh:targetObjectsOf sh:targetSubjectsOf)
+        ]
+    ], [
+      sh:message "Add the validation (mincount)";
+      sh:minCount 1;
+      sh:path sh:minCount
+    ];
+  sh:targetNode
+    ex:RecipeCommentShape,
+    ex:RecipeLabelShape.

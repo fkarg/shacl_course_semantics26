@@ -1,0 +1,9 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:RecipeValidationShape a sh:PropertyShape;
+  sh:hasValue sh:Info;
+  sh:message "Add the severity level sh:Info to the shape";
+  sh:minCount 1;
+  sh:path sh:severity;
+  sh:targetClass sh:PropertyShape.

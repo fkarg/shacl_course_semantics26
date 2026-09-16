@@ -1,0 +1,8 @@
+@prefix ex: <http://example.com/FriendGraph#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:agePropertyShape a sh:PropertyShape;
+  sh:message "Values of ex:age must be literals.";
+  sh:nodeKind sh:Literal.
+

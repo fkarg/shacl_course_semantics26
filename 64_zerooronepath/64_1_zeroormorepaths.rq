@@ -1,0 +1,15 @@
+PREFIX ex: <http://example.com/FriendGraph#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT *
+WHERE {
+  {
+    BIND ("zeroOrMore" AS ?type)
+    ex:carbonara ex:ingredients/rdf:rest*/rdf:first ?ingredients .
+  }
+  UNION
+  {
+    BIND ("oneOrMore" AS ?type)
+    ex:carbonara ex:ingredients/rdf:rest+/rdf:first ?ingredients .
+  }
+}

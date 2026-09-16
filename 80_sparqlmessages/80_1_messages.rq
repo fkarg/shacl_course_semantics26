@@ -1,0 +1,7 @@
+    PREFIX ex: <http://example.com/FriendGraph#>
+    SELECT DISTINCT ?anotherPerson
+    WHERE {
+        ?person ex:likes ?likedThing .
+        ?anotherPerson ex:likes ?likedThing
+        FILTER(?person != ?anotherPerson)
+    }

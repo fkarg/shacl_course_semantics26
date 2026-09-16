@@ -1,0 +1,12 @@
+@prefix ex: <http://example.com/FriendGraph#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+ex:PersonValidationShape a sh:NodeShape;
+  sh:property [
+      sh:hasValue true;
+      sh:message "Close the ex:PersonShape";
+      sh:minCount 1;
+      sh:path sh:closed
+    ];
+  sh:targetNode ex:PersonShape.
